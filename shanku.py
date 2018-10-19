@@ -6,11 +6,7 @@ import time
 
 def Level2():
     playsound.playsound("Beep.wav")
-eyesOpen = True
-global count
-count = 0
-global c
-c=round(time.time())
+    
 face_cascade=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml') 
 Video = cv2.VideoCapture(0)
@@ -26,7 +22,6 @@ def eye(eyes):
 def face(faces):
     for (x,y,w,h) in faces:
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
-        #roi_face = frame[y:y+h,x:x+w]
         
 while True:
     check,frame=Video.read()
