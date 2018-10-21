@@ -6,6 +6,8 @@ import time
 
 
 ct=0
+blinks=0
+
 
 def Level2():
     playsound.playsound("Beep.wav")
@@ -16,7 +18,7 @@ Video = cv2.VideoCapture(0)
 time.sleep(3)
 
 def eye(eyes):
-    global ct
+    global ct,blinks
     dimensions=len(eyes)
     if(dimensions!=0):
         for (a,b,c,d) in eyes:
@@ -27,9 +29,10 @@ def eye(eyes):
         count= ct
         count=count+1
         ct=count
-        print("counts in",count)
+        blinks=blinks+1
+        print("The total number of blinks",blinks)
         if count==5:
-            print("Rings in count",count)  
+            print("You are distracted at time",time.ctime())  
             count=0
             ct=0
             p = Thread(target = Level2)
